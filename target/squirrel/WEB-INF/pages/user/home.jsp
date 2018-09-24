@@ -45,7 +45,6 @@
             </div>
             <div class="home_nav">
                 <ul>
-
                     <a href="/user/basic">
                         <li class="set">
                             <div></div>

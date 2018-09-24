@@ -313,7 +313,6 @@
 -->
 <div class="main-content">
     <!--
-     
         描述：右侧banner（图片）部分
     -->
     <div class="slider-wapper">

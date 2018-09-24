@@ -45,6 +45,38 @@
             }
         }
     </script>
+    <script>
+        $(document).ready(function(){
+            $("#login_button").click(function(){
+                //获取用户输入的数据
+                var phone =$("#phone").val();
+                var password = $("#password").val();
+                $.ajax({
+                    type: "POST",
+                    dataType: "text",
+                    url: "/user/login",
+                    data: {
+                        phone:phone,
+                        password:password
+                    },
+                    async:false,
+                    success: function (result) {
+                        if ("ok" == result){
+                            //登陆成功，重载当前页面
+                            window.location.reload();
+                        }else {
+                            //登陆失败，弹出提示
+                            alert("用户名或密码错误");
+                        }
+                    },
+                    error : function(result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        alert("异常！");
+                    }
+                });
+            });
+        });
+    </script>
 <body ng-view="ng-view">
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
     <nav class="white nav1">
@@ -115,6 +147,7 @@
         </div>
     </nav>
 </div>
+
 <div ng-controller="loginController" class="ng-scope">
     <div id="login-show" class="login stark-components">
         <div class="publish-box z-depth-4">
@@ -122,17 +155,17 @@
                 <a onclick="showLogin()">
                     <div class="col s12 title"></div>
                 </a>
-                <form:form action="/user/login" method="post" commandName="user" role="form">
+                <div id="login_form" commandName="user" role="form" name="login">
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="phone" id="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
+                        <input type="password" name="password" id="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
                         <label>密码</label>
-                        <%--<a ng-click="showForget()" class="forget-btn">忘记密码？</a>--%>
+                        <a ng-click="showForget()" class="forget-btn">忘记密码？</a>
                     </div>
-                    <button type="submit" class="waves-effect waves-light btn login-btn red lighten-1">
+                    <button id="login_button" class="waves-effect waves-light btn login-btn red lighten-1">
                         <i class="iconfont left"></i>
                         <em>登录</em>
                     </button>
@@ -141,7 +174,7 @@
                         <a onclick="showSignup()" class="signup-btn">注册</a>
                         <em>吧！</em>
                     </div>
-                </form:form>
+                </div>
             </div>
         </div>
     </div>
@@ -213,16 +246,10 @@
         <a>${goodsExtend.goods.name}</a>
     </div>
     <div class="col s6">
-        <div class="slider" style="height: 440px;">
+            <div class="slider" style="height: 440px;">
             <ul class="slides" style="height: 400px;">
-                <img src="<%=basePath%>upload/${goodsExtend.images[0].imgUrl}" />
+                <img src="<%=basePath%>resources/goodImg/${goodsExtend.images[0].imgUrl}" />
             </ul>
-            <%--<ul class="indicators">--%>
-                <%--<li class="indicator-item"></li>--%>
-                <%--<li class="indicator-item"></li>--%>
-                <%--<li class="indicator-item"></li>--%>
-                <%--<li class="indicator-item"></li>--%>
-            <%--</ul>--%>
         </div>
     </div>
     <div class="col s6">
@@ -289,39 +316,5 @@
         联系我的时候，请说明是在黑科技校园二手平台squirrel看见的哦~
     </p>
 </div>
-<%--
-<div class="row detail-area">
-    <div class="clo s12">
-        <div ng-controller="commentController" class="comment stark-components z-depth-1 ng-scope">
-            <h1 class="title">评论</h1>
-            <hr class="hr1" />
-            <hr class="hr2" />
-            <div class="comment-collection">
-                <div class="comment-item ng-scope">
-                    <div class="comment-main-content">
-                        <em class="name ng-binding">hlk_1135:</em>
-                        <em class="ng-hide">回复</em>
-                        <em class="name ng-binding ng-hide">@:</em>
-                        <em class="ng-binding">不错。</em>
-                    </div>
-                    <div class="comment-function">
-                        <em class="time ng-biinding">2018/05/15 16:45:54</em>
-                        <a class="reply-or-delete">删除</a>
-                        <a class="reply-or-delete">回复</a>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-add row">
-                <div class="input-field col s12">
-                    <i class="iconfont prefix"></i>
-                    <input id="commentbox" type="text" class="validate ng-pristine ng-untouched ng-valid ng-empty"/>
-                    <label for="commentbox">这里写下评论</label>
-                    <button type="submit" class="waves-effect wave-light btn comment-submit">确认</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
---%>
 </body>
 </html>

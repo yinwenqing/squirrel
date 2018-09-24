@@ -43,20 +43,7 @@
             </div>
             <div class="home_nav">
                 <ul>
-                    <a href="">
-                        <li class="notice">
-                            <div></div>
-                            <span>我的消息</span>
-                            <strong></strong>
-                        </li>
-                    </a>
-                    <a href="">
-                        <li class="fri">
-                            <div></div>
-                            <span>关注列表</span>
-                            <strong></strong>
-                        </li>
-                    </a>
+
                     <a href="/user/basic">
                         <li class="set">
                             <div></div>

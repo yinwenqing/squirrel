@@ -41,24 +41,9 @@
                 <span class="name">${cur_user.username}</span>
                 <span class="school">黑龙江科技大学</span>
                 <span class="name">闲置数量：${cur_user.goodsNum}</span>
-                <span class="fa fa-share-alt">"快去分享一下"</span>
             </div>
             <div class="home_nav">
                 <ul>
-                    <a href="">
-                        <li class="notice">
-                            <div></div>
-                            <span>我的消息</span>
-                            <strong></strong>
-                        </li>
-                    </a>
-                    <a href="">
-                        <li class="fri">
-                            <div></div>
-                            <span>关注列表</span>
-                            <strong></strong>
-                        </li>
-                    </a>
                     <a href="/user/basic">
                         <li class="set">
                             <div></div>

@@ -41,7 +41,7 @@
                 <span class="name">${cur_urser.username}</span>
                 <span class="school">黑龙江科技大学</span>
                 <span class="name">闲置数量：${cur_user.goodsNum}</span>
-             
+
             </div>
             <div class="home_nav">
                 <ul>

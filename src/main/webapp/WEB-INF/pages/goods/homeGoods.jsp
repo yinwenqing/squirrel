@@ -122,6 +122,39 @@
 <!--
     描述：登录
 -->
+<script>
+    $(document).ready(function(){
+        $("#login_button").click(function(){
+            //获取用户输入的数据
+            var phone =$("#phone").val();
+            var password = $("#password").val();
+            $.ajax({
+                type: "POST",
+                dataType: "text",
+                url: "/user/login",
+                data: {
+                    phone:phone,
+                    password:password
+                },
+                async:false,
+                success: function (result) {
+                    if ("ok" == result){
+                        //登陆成功，重载当前页面
+                        window.location.reload();
+                    }else {
+                        //登陆失败，弹出提示
+                        alert("用户名或密码错误");
+                    }
+                },
+                error : function(result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    alert("异常！");
+                }
+            });
+        });
+    });
+</script>
+
 <div ng-controller="loginController" class="ng-scope">
     <div id="login-show" class="login stark-components">
         <div class="publish-box z-depth-4">
@@ -129,23 +162,17 @@
                 <a onclick="showLogin()">
                     <div class="col s12 title"></div>
                 </a>
-                <c:if test="${not empty msg}">
-                    <script type="text/javascript">
-                        alert(  ${msg});
-                    </script>
-                </c:if>
-                ${msg}
-                <form:form action="/user/login" method="post" commandName="user" role="form" name="login">
+                <div id="login_form" commandName="user" role="form" name="login">
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="phone" id="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
+                        <input type="password" name="password" id="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
                         <label>密码</label>
                         <a ng-click="showForget()" class="forget-btn">忘记密码？</a>
                     </div>
-                    <button type="submit" class="waves-effect waves-light btn login-btn red lighten-1">
+                    <button id="login_button" class="waves-effect waves-light btn login-btn red lighten-1">
                         <i class="iconfont left"></i>
                         <em>登录</em>
                     </button>
@@ -154,7 +181,7 @@
                         <a onclick="showSignup()" class="signup-btn">注册</a>
                         <em>吧！</em>
                     </div>
-                </form:form>
+                </div>
             </div>
         </div>
     </div>

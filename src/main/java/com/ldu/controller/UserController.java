@@ -62,8 +62,9 @@ public class UserController {
      * @param modelMap
      * @return
      */
-    @RequestMapping(value = "/login")
-    public ModelAndView loginValidate(HttpServletRequest request, HttpServletResponse response,User user, ModelMap modelMap) {
+    @RequestMapping(value = "/login",produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String loginValidate(HttpServletRequest request, HttpServletResponse response,User user, ModelMap modelMap) {
         User cur_user = userService.getUserByPhone(user.getPhone());
 
         String url=request.getHeader("Referer");
@@ -72,14 +73,14 @@ public class UserController {
             String pwd = MD5.md5(user.getPassword());
             if(pwd.equals(cur_user.getPassword())) {
                 request.getSession().setAttribute("cur_user",cur_user);
-                return new ModelAndView("redirect:"+url);
+                return "ok";
             }else{
                 request.getSession().setAttribute("msg","密码错误");
-                return new ModelAndView("redirect:"+url);
             }
         }
-        return new ModelAndView("redirect:"+url);
+        return "no";
     }
+
 
     /**
      * 更改用户名

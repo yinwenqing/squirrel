@@ -240,6 +240,7 @@
 </div>
 <!--显示商品详情-->
 <div ng-controller="detailBoxController" class="detail-box stark-components z-depth-1 row ng-scope">
+
     <div class="col s12 path">
         <a href="<%=basePath%>goods/catelog/${catelog.id}">${catelog.name}</a>
         <em>></em>
@@ -248,7 +249,7 @@
     <div class="col s6">
             <div class="slider" style="height: 440px;">
             <ul class="slides" style="height: 400px;">
-                <img src="<%=basePath%>resources/goodImg/${goodsExtend.images[0].imgUrl}" />
+                <img src="<%=basePath%>goodsImg/${goodsExtend.images[0].imgUrl} " />
             </ul>
         </div>
     </div>

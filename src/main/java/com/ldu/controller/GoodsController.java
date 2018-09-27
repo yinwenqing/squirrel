@@ -276,7 +276,8 @@ public class GoodsController {
         //原始名称
         String oldFileName = myfile.getOriginalFilename(); //获取上传文件的原名
         //存储图片的物理路径
-        String file_path = session.getServletContext().getRealPath("upload");
+        String file_path = session.getServletContext().getRealPath("goodsImg");
+
         //上传图片
         if(myfile!=null && oldFileName!=null && oldFileName.length()>0){
             //新的图片名称

@@ -44,6 +44,39 @@
             }
         }
     </script>
+    <script>
+        $(document).ready(function(){
+            $("#login_button").click(function(){
+                //获取用户输入的数据
+                var phone =$("#phone").val();
+                var password = $("#password").val();
+                $.ajax({
+                    type: "POST",
+                    dataType: "text",
+                    url: "/user/login",
+                    data: {
+                        phone:phone,
+                        password:password
+                    },
+                    async:false,
+                    success: function (result) {
+                        if ("ok" == result){
+                            //登陆成功，重载当前页面
+                            window.location.reload();
+                        }else {
+                            //登陆失败，弹出提示
+                            alert("用户名或密码错误");
+                        }
+                    },
+                    error : function(result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        alert("异常！");
+                    }
+                });
+            });
+        });
+    </script>
+
 <body ng-view="ng-view">
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
     <nav class="white nav1">
@@ -84,10 +117,6 @@
                     <li>
                         <a>${cur_user.username}</a>
                     </li>
-                    <li class="notification">
-                        <i ng-click="showNotificationBox()" class="iconfont"></i>
-                        <div ng-show="notification.tagIsShow" class="notification-amount red lighten-1 ng-binding ng-hide">0 </div>
-                    </li>
                     <li class="changemore">
                         <a class="changeMoreVertShow()">
                             <i class="iconfont"></i>
@@ -95,7 +124,6 @@
                         <div class="more-vert">
                             <ul class="dropdown-content">
                                 <li><a href="/user/home">个人中心</a></li>
-                                <li><a>消息</a></li>
                                 <li><a onclick="ChangeName()">更改用户名</a></li>
                                 <li><a href="/user/logout">退出登录</a></li>
                             </ul>
@@ -121,17 +149,16 @@
                 <a onclick="showLogin()">
                     <div class="col s12 title"></div>
                 </a>
-                <form:form action="/user/login" method="post" commandName="user" role="form">
+                <div id="login_form" commandName="user" role="form" name="login">
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="phone" id="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
+                        <input type="password" name="password" id="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
                         <label>密码</label>
-                        <a ng-click="showForget()" class="forget-btn">忘记密码？</a>
                     </div>
-                    <button type="submit" class="waves-effect waves-light btn login-btn red lighten-1">
+                    <button id="login_button" class="waves-effect waves-light btn login-btn red lighten-1">
                         <i class="iconfont left"></i>
                         <em>登录</em>
                     </button>
@@ -140,7 +167,7 @@
                         <a onclick="showSignup()" class="signup-btn">注册</a>
                         <em>吧！</em>
                     </div>
-                </form:form>
+                </div>
             </div>
         </div>
     </div>
@@ -205,12 +232,6 @@
     </div>
 </div>
 <div ng-controller="sidebarController" class="sidebar stark-components ng-scope">
-    <li ng-class="{true: 'active'}[isAll]">
-        <a href="<%=basePath%>goods/catelog/1" class="index">
-            <img src="<%=basePath%>img/index.png">
-            <em>最新发布</em>
-        </a>
-    </li>
     <li ng-class="{true: 'active'}[isDigital]">
         <a href="/goods/catelog/1" class="digital">
             <img src="<%=basePath%>img/digital.png"  />

@@ -89,18 +89,13 @@
                     <li>
                         <a>${cur_user.username}</a>
                     </li>
-                    <li class="notification">
-                        <i ng-click="showNotificationBox()" class="iconfont"></i>
-                        <div ng-show="notification.tagIsShow" class="notification-amount red lighten-1 ng-binding ng-hide">0 </div>
-                    </li>
                     <li class="changemore">
                         <a class="changeMoreVertShow()">
                             <i class="iconfont"></i>
                         </a>
                         <div class="more-vert">
                             <ul class="dropdown-content">
-                                <li><a href="/user/home">个人中心</a></li>
-                                <li><a>消息</a></li>
+                                <li><a href="/user/basic">个人中心</a></li>
                                 <li><a onclick="ChangeName()">更改用户名</a></li>
                                 <li><a href="/user/logout">退出登录</a></li>
                             </ul>
@@ -253,12 +248,6 @@
     描述：左侧导航条
 -->
 <div ng-controller="sidebarController" class="sidebar stark-components ng-scope">
-    <li ng-class="{true: 'active'}[isAll]">
-        <a href="/goods/catelog/1" class="index">
-            <img src="../img/index.png">
-            <em>最新发布</em>
-        </a>
-    </li>
     <li ng-class="{true: 'active'}[isDigital]">
         <a href="/goods/catelog/1" class="digital">
             <img src="../img/digital.png"  />

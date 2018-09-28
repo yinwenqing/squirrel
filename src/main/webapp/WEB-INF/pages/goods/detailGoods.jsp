@@ -117,10 +117,6 @@
                     <li>
                         <a>${cur_user.username}</a>
                     </li>
-                    <li class="notification">
-                        <i ng-click="showNotificationBox()" class="iconfont"></i>
-                        <div ng-show="notification.tagIsShow" class="notification-amount red lighten-1 ng-binding ng-hide">0 </div>
-                    </li>
                     <li class="changemore">
                         <a class="changeMoreVertShow()">
                             <i class="iconfont"></i>
@@ -128,7 +124,6 @@
                         <div class="more-vert">
                             <ul class="dropdown-content">
                                 <li><a href="/user/home">个人中心</a></li>
-                                <li><a>消息</a></li>
                                 <li><a onclick="ChangeName()">更改用户名</a></li>
                                 <li><a href="/user/logout">退出登录</a></li>
                             </ul>

@@ -272,18 +272,20 @@ public class GoodsController {
      */
     @ResponseBody
     @RequestMapping(value = "/uploadFile")
-    public  Map<String,Object> uploadFile(HttpSession session,MultipartFile myfile) throws IllegalStateException, IOException{
+    public  Map<String,Object> uploadFile(HttpServletRequest request,HttpSession session,MultipartFile myfile) throws IllegalStateException, IOException{
         //原始名称
         String oldFileName = myfile.getOriginalFilename(); //获取上传文件的原名
         //存储图片的物理路径
-        String file_path = session.getServletContext().getRealPath("goodsImg");
+//        String file_path = session.getServletContext().getRealPath("goodsImg");
+        String file_path =request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/goodsImg";
 
         //上传图片
         if(myfile!=null && oldFileName!=null && oldFileName.length()>0){
             //新的图片名称
             String newFileName = UUID.randomUUID() + oldFileName.substring(oldFileName.lastIndexOf("."));
             //新图片
-            File newFile = new File(file_path+"/"+newFileName);
+            File newFile = new File("C:\\Users\\ywq\\Documents\\wenqing\\worksapce\\my\\src\\main\\webapp\\goodsImg",newFileName);
+
             //将内存中的数据写入磁盘
             myfile.transferTo(newFile);
             //将新图片名称返回到前端

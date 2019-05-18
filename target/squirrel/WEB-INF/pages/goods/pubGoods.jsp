@@ -36,7 +36,7 @@
             <a href="<%=basePath%>goods/homeGoods">
                 <h1 class="logo"></h1>
             </a>
-            <a href="/user/home">
+            <a href="/squirrel/user/home">
                 <div class="home"></div>
             </a>
         </div>
@@ -58,21 +58,21 @@
             </div>
             <div class="home_nav">
                 <ul>
-                    <a href="/user/basic">
+                    <a href="/squirrel/user/basic">
                         <li class="set">
                             <div></div>
                             <span>个人设置</span>
                             <strong></strong>
                         </li>
                     </a>
-                    <a href="/goods/publishGoods">
+                    <a href="/squirrel/goods/publishGoods">
                         <li class="store">
                             <div></div>
                             <span>发布物品</span>
                             <strong></strong>
                         </li>
                     </a>
-                    <a href="/user/allGoods">
+                    <a href="/squirrel/user/allGoods">
                         <li class="second">
                             <div></div>
                             <span>我的闲置</span>
@@ -88,7 +88,7 @@
         -->
         <div id="user_content">
             <div class="basic">
-                <form:form action="/goods/publishGoodsSubmit" method="post" role="form" enctype="multipart/form-data">
+                <form:form action="/squirrel/goods/publishGoodsSubmit" method="post" role="form" enctype="multipart/form-data">
                     <h1 style="margin-left: 210px;">发布物品</h1><hr />
                     <div class="changeinfo">
                         <span>物品名：</span>

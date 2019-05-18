@@ -26,7 +26,7 @@
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li><a href="/user/logout">logout</a></li>
+							<li><a href="/squirrel/user/logout">logout</a></li>
 						</ul>
 					</div>
 				</div>
@@ -36,14 +36,14 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h2>Squirrel用户信息</h2>
-			<a class="btn btn-primary" href="/admin/exportUser">导出数据为excel</a>
+			<a class="btn btn-primary" href="/squirrel/admin/exportUser">导出数据为excel</a>
 			<a class="btn btn-primary" href="#" id="add">添加用户</a>
 			<div class="btn-group">
 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					查看接口数据 <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
-					<li><a href="/admin/users?current=1&rowCount=10&sort[sender]=asc&searchPhrase=&id=b0df282a-0d67-40e5-8558-c9e93b7befed" target="_blank">JSON</a></li>
+					<li><a href="/squirrel/admin/users?current=1&rowCount=10&sort[sender]=asc&searchPhrase=&id=b0df282a-0d67-40e5-8558-c9e93b7befed" target="_blank">JSON</a></li>
 				</ul>
 			</div>
 			<table id="grid-data" class="table table-condensed table-hover table-striped">

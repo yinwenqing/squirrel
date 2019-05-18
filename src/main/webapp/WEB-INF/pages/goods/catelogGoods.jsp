@@ -108,11 +108,11 @@
                 <c:if test="${!empty cur_user}">
                     <li class="publish-btn">
                         <button data-position="bottom" class="red lighten-1 waves-effect waves-light btn">
-                            <a href="/goods/publishGoods">我要发布</a>
+                            <a href="/squirrel/goods/publishGoods">我要发布</a>
                         </button>
                     </li>
                     <li>
-                        <a href="/user/allGoods">我发布的商品</a>
+                        <a href="/squirrel/user/allGoods">我发布的商品</a>
                     </li>
                     <li>
                         <a>${cur_user.username}</a>
@@ -123,9 +123,9 @@
                         </a>
                         <div class="more-vert">
                             <ul class="dropdown-content">
-                                <li><a href="/user/home">个人中心</a></li>
+                                <li><a href="/squirrel/user/home">个人中心</a></li>
                                 <li><a onclick="ChangeName()">更改用户名</a></li>
-                                <li><a href="/user/logout">退出登录</a></li>
+                                <li><a href="/squirrel/user/logout">退出登录</a></li>
                             </ul>
                         </div>
                     </li>
@@ -179,7 +179,7 @@
                 <a onclick="showSignup()">
                     <div class="col s12 title"></div>
                 </a>
-                <form:form action="/user/addUser" method="post" commandName="user" role="form">
+                <form:form action="/squirrel/user/addUser" method="post" commandName="user" role="form">
                     <div class="input-field col s12">
                         <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>昵称</label>
@@ -215,7 +215,7 @@
                 <div class="col s12 title">
                     <h1>修改用户名</h1>
                 </div>
-                <form:form action="/user/changeName" method="post" commandName="user" role="form">
+                <form:form action="/squirrel/user/changeName" method="post" commandName="user" role="form">
                     <div class="input-field col s12">
                         <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>修改用户名</label>
@@ -233,7 +233,7 @@
 </div>
 <div ng-controller="sidebarController" class="sidebar stark-components ng-scope">
     <li ng-class="{true: 'active'}[isDigital]">
-        <a href="/goods/catelog/1" class="digital">
+        <a href="/squirrel/goods/catelog/1" class="digital">
             <img src="<%=basePath%>img/digital.png"  />
             <em>闲置数码</em>
         </a>
@@ -275,9 +275,7 @@
         </a>
     </li>
     <div class="info">
-        <a href="" target="_blank">关于我们</a><em>-</em>
-        <a href="">联系我们</a>
-        <p>©2018 A-PSD工作室</p>
+        <p>©2018 信计小分队</p>
     </div>
 </div>\
 <div class="main-content">

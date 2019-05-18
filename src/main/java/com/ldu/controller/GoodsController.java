@@ -66,7 +66,9 @@ public class GoodsController {
                 goodsExtend.setImages(images);
                 goodsAndImage.add(j, goodsExtend);
             }
+
             String key = "catelog" + "Goods" + i;
+
             modelAndView.addObject(key, goodsAndImage);
         }
         modelAndView.setViewName("goods/homeGoods");
@@ -280,6 +282,7 @@ public class GoodsController {
         String file_path =request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/goodsImg";
 
         //上传图片
+
         if(myfile!=null && oldFileName!=null && oldFileName.length()>0){
             //新的图片名称
             String newFileName = UUID.randomUUID() + oldFileName.substring(oldFileName.lastIndexOf("."));
